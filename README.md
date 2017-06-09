@@ -1,12 +1,9 @@
 # Red.jl
-Julia wrapper to RED language API
+Julia wrapper for the [Red](http://www.red-lang.org//) API library
 
 [![Build Status](https://travis-ci.org/joa-quim/Red.jl.svg?branch=master)](https://travis-ci.org/joa-quim/Red.jl)
 
-RED.jl
-======
 
-Julia wrapper for the [Red](http://www.red-lang.org//) API library
 
 Install
 =======
@@ -23,9 +20,9 @@ First of all you must generate a cdecl libRed.dll. You do that from the command 
 
 Having your ``Red`` directory in the path, currently, you must also also edit the file red_h.jl and point the first line to the place where the ``libRed.dll`` can be found. Now
 
-  using Red
-  redOpen()
-  img = rand(UInt8, 16,16);
-  bin = redBinary(img, 16*16);
-  redProbe(bin);
-  redClose()
+    using Red
+    redOpen()
+    img = rand(UInt8, 16,16);       # Generate a random 'image' array
+    bin = redBinary(img, 16*16);    # Send the img array to Red
+    redProbe(bin);                  # Check that data arrived in Red
+    redClose()
