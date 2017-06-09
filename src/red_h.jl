@@ -29,7 +29,21 @@ end
 function redDoBlock(code::Ptr{Void})
     ccall((:redDoBlock,red),Ptr{Void},(Ptr{Void},), code)
 end
+
 #red_value   redCall(red_word name, ...);
+# AGAIN, TRICK IT TO IMITATE A VARARGS CALL WITH UP TO 4 ARGINS
+function redCall(name::Ptr{Void})
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},), name)
+end
+function redCall(name1::Ptr{Void}, name2::Ptr{Void})
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name1, name2)
+end
+function redCall(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void})
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3)
+end
+function redCall(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::Ptr{Void})
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4)
+end
 
 # Expose a C callback in Red
 function redRoutine(name, spec, func_ptr::Ptr{Void})
@@ -66,7 +80,7 @@ function redFloat(number)
 end
 
 function redPair(x, y)
-    ccall((:redPair,red),Ptr{Void},(Cdouble, Cdouble), x,y)
+    ccall((:redPair,red),Ptr{Void},(Clong, Clong), x,y)
 end
 
 function redTouple(r::Integer, g::Integer, b::Integer)
@@ -90,6 +104,20 @@ function redWord(str)
 end
 
 #redBlock(red_value v, ...);
+# AGAIN, TRICK IT TO IMITATE A VARARGS CALL WITH UP TO 4 ARGINS
+function redBlock(name::Ptr{Void})
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},), name)
+end
+function redBlock(name1::Ptr{Void}, name2::Ptr{Void})
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name1, name2)
+end
+function redBlock(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void})
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3)
+end
+function redBlock(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::Ptr{Void})
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4)
+end
+
 #redPath(red_value v, ...);
 
 function redLoadPath(pato)
