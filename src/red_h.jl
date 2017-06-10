@@ -33,16 +33,16 @@ end
 #red_value   redCall(red_word name, ...);
 # AGAIN, TRICK IT TO IMITATE A VARARGS CALL WITH UP TO 4 ARGINS
 function redCall(name::Ptr{Void})
-    ccall((:redCall,red),Ptr{Void},(Ptr{Void},), name)
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},), name, C_NULL)
 end
 function redCall(name1::Ptr{Void}, name2::Ptr{Void})
-    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name1, name2)
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, C_NULL)
 end
 function redCall(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void})
-    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3)
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, C_NULL)
 end
 function redCall(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::Ptr{Void})
-    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4)
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4, C_NULL)
 end
 
 # Expose a C callback in Red
@@ -106,16 +106,16 @@ end
 #redBlock(red_value v, ...);
 # AGAIN, TRICK IT TO IMITATE A VARARGS CALL WITH UP TO 4 ARGINS
 function redBlock(name::Ptr{Void})
-    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},), name)
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name, C_NULL)
 end
 function redBlock(name1::Ptr{Void}, name2::Ptr{Void})
-    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name1, name2)
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, C_NULL)
 end
 function redBlock(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void})
-    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3)
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, C_NULL)
 end
 function redBlock(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::Ptr{Void})
-    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4)
+    ccall((:redBlock,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4, C_NULL)
 end
 
 #redPath(red_value v, ...);
