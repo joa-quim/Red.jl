@@ -83,12 +83,12 @@ function redPair(x, y)
     ccall((:redPair,red),Ptr{Void},(Clong, Clong), x,y)
 end
 
-function redTouple(r::Integer, g::Integer, b::Integer)
-    ccall((:redTouple,red),Ptr{Void},(Clong, Clong, Clong), r,g,b)
+function redTuple(r::Integer, g::Integer, b::Integer)
+    ccall((:redTuple,red),Ptr{Void},(Clong, Clong, Clong), r,g,b)
 end
 
-function redTouple4(r::Integer, g::Integer, b::Integer, a::Integer)
-    ccall((:redTouple4,red),Ptr{Void},(Clong, Clong, Clong, Clong), r,g,b,a)
+function redTuple4(r::Integer, g::Integer, b::Integer, a::Integer)
+    ccall((:redTuple4,red),Ptr{Void},(Clong, Clong, Clong, Clong), r,g,b,a)
 end
 
 function redBinary(buffer, bytes::Integer)
