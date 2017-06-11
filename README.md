@@ -16,13 +16,22 @@ WARNING: Since Red System (Alpha release) is currently 32-bit only, this package
 Using
 =====
 
-First of all you must generate a cdecl libRed.dll. You do that from the command line (the cmd shell) by runing ``red-08jun17-711906d.exe build libRed``. Here a daily release was used (after ``0.6.2``) because the ``redBinary()`` function was added after ``0.6.2``.
+First of all you must generate a cdecl libRed.dll. You do that from the command line (the cmd shell) by runing ``red-11jun17-4045791.exe build libRed``. Here a daily release was used (after ``0.6.2``) because the ``redBinary() and redImage()`` functions were added after ``0.6.2``.
 
 Having your ``Red`` directory in the path, currently, you must also also edit the file red_h.jl and point the first line to the place where the ``libRed.dll`` can be found. Now
 
+The classic "Hellow World" example
+
     using Red
     redOpen()
-    img = rand(UInt8, 16,16);       # Generate a random 'image' array
-    bin = redBinary(img, 16*16);    # Send the img array to Red
-    redProbe(bin);                  # Check that data arrived in Red
+    redDo("view [{Hello World}]");
+    redClose()
+
+Visualize a random *image*
+
+    using Red
+    redOpen()
+    img = rand(UInt32, 128,128);    # Generate a random 'image' array
+    redSet(redSymbol("img"), redImage(128, 128, img, 0));
+    redDo("view [image img]");
     redClose()
