@@ -211,7 +211,7 @@ function redCloseLogFile()
 end
 
 const RED_IMAGE_FORMAT_RGB = 0
-const RED_IMAGE_FORMAT_RGBA = 1
+const RED_IMAGE_FORMAT_ARGB = 1
 
 const RED_TYPE_VALUE = 0
 const RED_TYPE_DATATYPE = 1
