@@ -1,5 +1,5 @@
 # Red.jl
-Julia wrapper for the [Red](http://www.red-lang.org//) API library
+A Julia wrapper for the [Red](http://www.red-lang.org//) API library.
 
 [![Build Status](https://travis-ci.org/joa-quim/Red.jl.svg?branch=master)](https://travis-ci.org/joa-quim/Red.jl)
 
@@ -10,7 +10,7 @@ Install
 
     Pkg.clone("git://github.com/joa-quim/Red.jl.git")
 
-WARNING: Sind the Red System is currently a 32 bits only this package MUST be run from a 32 bits Julia version.
+WARNING: Since Red System (Alpha release) is currently 32-bit only, this package MUST be run from a Julia 32-bit version.
 
 
 Using
