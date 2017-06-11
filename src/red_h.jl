@@ -83,16 +83,20 @@ function redPair(x, y)
     ccall((:redPair,red),Ptr{Void},(Clong, Clong), x,y)
 end
 
-function redTouple(r::Integer, g::Integer, b::Integer)
-    ccall((:redTouple,red),Ptr{Void},(Clong, Clong, Clong), r,g,b)
+function redTuple(r::Integer, g::Integer, b::Integer)
+    ccall((:redTuple,red),Ptr{Void},(Clong, Clong, Clong), r,g,b)
 end
 
-function redTouple4(r::Integer, g::Integer, b::Integer, a::Integer)
-    ccall((:redTouple4,red),Ptr{Void},(Clong, Clong, Clong, Clong), r,g,b,a)
+function redTuple4(r::Integer, g::Integer, b::Integer, a::Integer)
+    ccall((:redTuple4,red),Ptr{Void},(Clong, Clong, Clong, Clong), r,g,b,a)
 end
 
 function redBinary(buffer, bytes::Integer)
     ccall((:redBinary,red),Ptr{Void},(Ptr{UInt8},Cint),buffer, bytes)
+end
+
+function redImage(width::Integer, height::Integer, buffer, format::Integer)
+    ccall((:redImage,red),Ptr{Void},(Clong,Clong,Ptr{UInt8},Cint),width,height,buffer,format)
 end
 
 function redString(str)
@@ -206,6 +210,8 @@ function redCloseLogFile()
     ccall((:redCloseLogFile,red),Void,())
 end
 
+const RED_IMAGE_FORMAT_RGB = 0
+const RED_IMAGE_FORMAT_ARGB = 1
 
 const RED_TYPE_VALUE = 0
 const RED_TYPE_DATATYPE = 1
