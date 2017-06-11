@@ -5,7 +5,7 @@ module Red
 export
     redOpen, redClose, redDo, redDoFile, redDoBlock, redCall, redRoutine, redSymbol, redUnset,
     redNone, redLogic, redDatatype, redInteger, redFloat, redPair, redTuple, redTuple4,
-	redBinary, redString, redWord, redBlock, redLoadPath, redMakeSeries,
+	redBinary, redImage, redString, redWord, redBlock, redLoadPath, redMakeSeries,
     redGet, redSet, redSetPath, redGetPath, redPrint, redProbe, redFormError,
     redOpenLogWindow, redCloseLogWindow, redOpenLogFile, redCloseLogFile
 

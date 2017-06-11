@@ -95,6 +95,10 @@ function redBinary(buffer, bytes::Integer)
     ccall((:redBinary,red),Ptr{Void},(Ptr{UInt8},Cint),buffer, bytes)
 end
 
+function redImage(width::Integer, height::Integer, buffer, format::Integer)
+    ccall((:redImage,red),Ptr{Void},(Clong,Clong,Ptr{UInt8},Cint),width,height,buffer,format)
+end
+
 function redString(str)
     ccall((:redString,red),Ptr{Void},(Ptr{UInt8},),str)
 end
@@ -206,6 +210,8 @@ function redCloseLogFile()
     ccall((:redCloseLogFile,red),Void,())
 end
 
+const RED_IMAGE_FORMAT_RGB = 0
+const RED_IMAGE_FORMAT_RGBA = 1
 
 const RED_TYPE_VALUE = 0
 const RED_TYPE_DATATYPE = 1
