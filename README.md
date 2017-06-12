@@ -18,9 +18,9 @@ Using
 
 First of all you must generate a cdecl libRed.dll. You do that from the command line (the cmd shell) by runing ``red-11jun17-4045791.exe build libRed``. Here a daily release was used (after ``0.6.2``) because the ``redBinary() and redImage()`` functions were added after ``0.6.2``.
 
-Having your ``Red`` directory in the path, currently, you must also also edit the file red_h.jl and point the first line to the place where the ``libRed.dll`` can be found. Now
+Having your ``Red`` directory in the path, currently, you must also also edit the file `red_h.jl` and point the first line to the place where the ``libRed.dll`` can be found. Now
 
-The classic "Hellow World" example
+The classic "Hello World" example
 
     using Red
     redOpen()
