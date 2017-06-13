@@ -35,3 +35,16 @@ Visualize a random *image*
     redSet(redSymbol("img"), redImage(128, 128, img, 0));
     redDo("view [image img]");
     redClose()
+
+Now, I am so thrilled that the next worked that I'll show it even than there are several things that need fixes/learning. The example shows how we can use [GMT.jl](https://github.com/joa-quim/GMT.jl) to create a world topography map and use the image computed in **GMT** to display in a **Red** window.
+
+   using GMT, Red
+   gmt("grdimage earth_relief_10m.grd -I+ -Rd -JR5c");  # Download the  *earth_relief_10m.grd* from the GMT server and make a PS image
+   I = gmt("psconvert = -A");                           # Convert the PostScript file in memory into a raster (a Ghostscript work)
+   size(I.image)                                        # Inquire the size of image (= 3,361,591)
+   redSet(redSymbol("I.image"), redImage(361, 591, I.image, 0));  # Send image to Red
+   redDo("view [image I.image]");                       # and view it.
+   redClose()
+
+Colors are not right but who cares at this point.
+![Screenshot](http://w3.ualg.pt/~jluis/first_GMT_Julia_Red.jpg)
