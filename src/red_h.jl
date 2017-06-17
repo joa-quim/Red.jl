@@ -56,11 +56,11 @@ function redSymbol(word)
 end
 
 function redUnset()
-    ccall((:redUnset,red),Void,())
+    ccall((:redUnset,red),Ptr{Void},())
 end
 
 function redNone()
-    ccall((:redNone,red),Void,())
+    ccall((:redNone,red),Ptr{Void},())
 end
 
 function redLogic(logic::Integer)
