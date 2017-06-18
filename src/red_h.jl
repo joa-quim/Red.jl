@@ -210,6 +210,8 @@ function redCloseLogFile()
     ccall((:redCloseLogFile,red),Void,())
 end
 
+const red_value = Ptr{Void}
+
 const RED_IMAGE_FORMAT_RGB = 0
 const RED_IMAGE_FORMAT_ARGB = 1
 
