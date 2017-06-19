@@ -133,10 +133,21 @@ function redMakeSeries(type_::Integer, slots::Integer)
 end
 
 # Red -> C
-#long        redCInt32(red_integer number);
-#double      redCDouble(red_float number);
-#const char* redCString(red_string string);
-#long        redTypeOf(red_value value);
+function redCInt32(number::Ptr{Void})
+    ccall((:redCInt32,red),Clong,(Ptr{Void},), number)
+end
+
+function redCDouble(number::Ptr{Void})
+    ccall((:redCDouble,red),Cdouble,(Ptr{Void},), number)
+end
+
+function redCString(str::Ptr{Void})
+    ccall((:redCString,red),Ptr{UInt8},(Ptr{Void},), str)
+end
+
+function redTypeOf(value::Ptr{Void})
+    ccall((:redTypeOf,red),Clong,(Ptr{Void},), value)
+end
 
 # Red actions
 #=

@@ -7,7 +7,8 @@ export
     redNone, redLogic, redDatatype, redInteger, redFloat, redPair, redTuple, redTuple4,
 	redBinary, redImage, redString, redWord, redBlock, redLoadPath, redMakeSeries,
     redGet, redSet, redSetPath, redGetPath, redPrint, redProbe, redFormError,
-    redOpenLogWindow, redCloseLogWindow, redOpenLogFile, redCloseLogFile
+    redOpenLogWindow, redCloseLogWindow, redOpenLogFile, redCloseLogFile,
+    redCInt32, redCDouble, redCString, redTypeOf
 
 include("red_h.jl")
 
