@@ -199,6 +199,14 @@ function redGetPath(pato)
     ccall((:redGetPath,red),Ptr{Void},(Ptr{UInt8},),pato)
 end
 
+# Access to a Red object/map/struct field
+function redSetField(obj::Ptr{Void}, field::Integer, value::Ptr{Void})
+    ccall((:redSetField,red),Ptr{Void},(Ptr{Void}, Clong, Ptr{Void}), obj, field, value)
+end
+function redGetField(obj::Ptr{Void}, field::Integer)
+    ccall((:redGetField,red),Ptr{Void},(Ptr{Void}, Clong), obj, field)
+end
+
 #Debugging
 
 function redPrint(value::Ptr{Void})
