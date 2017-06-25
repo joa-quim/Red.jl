@@ -123,6 +123,18 @@ function redBlock(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::P
 end
 
 #redPath(red_value v, ...);
+function redPath(name::Ptr{Void})
+    ccall((:redPath,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name, C_NULL)
+end
+function redPath(name1::Ptr{Void}, name2::Ptr{Void})
+    ccall((:redPath,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, C_NULL)
+end
+function redPath(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void})
+    ccall((:redPath,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, C_NULL)
+end
+function redPath(name1::Ptr{Void}, name2::Ptr{Void}, name3::Ptr{Void}, name4::Ptr{Void})
+    ccall((:redPath,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, name3, name4, C_NULL)
+end
 
 function redLoadPath(pato)
     ccall((:redLoadPath,red),Ptr{Void},(Ptr{UInt8},),pato)
