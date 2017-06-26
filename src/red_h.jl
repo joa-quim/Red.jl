@@ -192,11 +192,11 @@ end
 
 # Access to a Red path
 function redSetPath(pato, val::Ptr{Void})
-    ccall((:redSetPath,red),Ptr{Void},(Ptr{UInt8}, Ptr{Void}), pato, val)
+    ccall((:redSetPath,red),Ptr{Void},(Ptr{Void}, Ptr{Void}), pato, val)
 end
 
 function redGetPath(pato)
-    ccall((:redGetPath,red),Ptr{Void},(Ptr{UInt8},),pato)
+    ccall((:redGetPath,red),Ptr{Void},(Ptr{Void},),pato)
 end
 
 # Access to a Red object/map/struct field
