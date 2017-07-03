@@ -33,7 +33,7 @@ end
 #red_value   redCall(red_word name, ...);
 # AGAIN, TRICK IT TO IMITATE A VARARGS CALL WITH UP TO 4 ARGINS
 function redCall(name::Ptr{Void})
-    ccall((:redCall,red),Ptr{Void},(Ptr{Void},), name, C_NULL)
+    ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void}), name, C_NULL)
 end
 function redCall(name1::Ptr{Void}, name2::Ptr{Void})
     ccall((:redCall,red),Ptr{Void},(Ptr{Void},Ptr{Void},Ptr{Void}), name1, name2, C_NULL)
@@ -192,11 +192,19 @@ end
 
 # Access to a Red path
 function redSetPath(pato, val::Ptr{Void})
-    ccall((:redSetPath,red),Ptr{Void},(Ptr{UInt8}, Ptr{Void}), pato, val)
+    ccall((:redSetPath,red),Ptr{Void},(Ptr{Void}, Ptr{Void}), pato, val)
 end
 
 function redGetPath(pato)
-    ccall((:redGetPath,red),Ptr{Void},(Ptr{UInt8},),pato)
+    ccall((:redGetPath,red),Ptr{Void},(Ptr{Void},),pato)
+end
+
+# Access to a Red object/map/struct field
+function redSetField(obj::Ptr{Void}, field::Integer, value::Ptr{Void})
+    ccall((:redSetField,red),Ptr{Void},(Ptr{Void}, Clong, Ptr{Void}), obj, field, value)
+end
+function redGetField(obj::Ptr{Void}, field::Integer)
+    ccall((:redGetField,red),Ptr{Void},(Ptr{Void}, Clong), obj, field)
 end
 
 #Debugging
