@@ -36,15 +36,14 @@ Visualize a random *image*
     redDo("view [image img]");
     redClose()
 
-Now, I am so thrilled that the next worked that I'll show it even than there are several things that need fixes/learning. The example shows how we can use [GMT.jl](https://github.com/joa-quim/GMT.jl) to create a world topography map and use the image computed in **GMT** to display in a **Red** window.
+This example shows how we can use [GMT.jl](https://github.com/joa-quim/GMT.jl) to create a world topography map and use the image computed in **GMT** to display in a **Red** window.
 
     using GMT, Red
     gmt("grdimage earth_relief_10m.grd -I+ -Rd -JR5c");  # Download the  *earth_relief_10m.grd* from the GMT server and make a PS image
-    I = gmt("psconvert = -A");                           # Convert the PostScript file in memory into a raster (a Ghostscript work)
-    size(I.image)                                        # Inquire the size of image (= 3,361,591)
-    redSet(redSymbol("I.image"), redImage(361, 591, I.image, 0));  # Send image to Red
-    redDo("view [image I.image]");                       # and view it.
+    I = gmt("psconvert -A -MTRP =");                     # Convert the PostScript file in memory into a raster (a Ghostscript work)
+    redSet(redSymbol("I.image"), redImage(size(I.image,2), size(I.image,1), I.image, 0));  # Send image to Red
+    redDo("view [Title {GMT->Julia->Red} image I.image]"); # and view it.
     redClose()
 
-Colors are not right but who cares at this point.
+Note: this example needs fixes that were introduced after GMT5.4.2 and GMT.jl 0.1.0.
 ![Screenshot](http://w3.ualg.pt/~jluis/first_GMT_Julia_Red.jpg)
